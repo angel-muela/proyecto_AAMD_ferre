@@ -1,6 +1,6 @@
-Contexto: Actúa como un Arquitecto de Software Senior especializado en desarrollo multiplataforma con Flutter.
+## Contexto: Actúa como un Arquitecto de Software Senior especializado en desarrollo multiplataforma con Flutter.
 
-Objetivo: Diseñar un Plan de Implantación detallado para el proyecto "Ferretería", una aplicación robusta que debe funcionar en Android, Web, Windows e iOS utilizando el entorno Antigravity.
+## Objetivo: Diseñar un Plan de Implantación detallado para el proyecto "Ferretería", una aplicación robusta que debe funcionar en Android, Web, Windows e iOS utilizando el entorno Antigravity.
 
 # Restricciones Técnicas:
 
@@ -14,7 +14,7 @@ Objetivo: Diseñar un Plan de Implantación detallado para el proyecto "Ferreter
 
    5. Estándares: No utilizar opciones de producción "A", no incluir analíticas. El enfoque debe ser un estándar limpio y escalable.
 
-Tarea: Antes de generar cualquier línea de código, genera un Plan de Implementación en formato Markdown que incluya:
+# Tarea: Antes de generar cualquier línea de código, genera un Plan de Implementación en formato Markdown que incluya:
 
    1. Requerimientos de Entorno: Herramientas necesarias y configuración del SDK para Antigravity.
 
@@ -28,4 +28,4 @@ Tarea: Antes de generar cualquier línea de código, genera un Plan de Implement
 
    6. Cronograma de Desarrollo (Fases): Desde la inicialización hasta el despliegue multiplataforma.
 
-Formato de entrega: Tablas de Markdown organizadas y listas de verificación (checklists). No proporciones el código fuente todavía, solo el plan estratégico.
+# Formato de entrega: Tablas de Markdown organizadas y listas de verificación (checklists). No proporciones el código fuente todavía, solo el plan estratégico.

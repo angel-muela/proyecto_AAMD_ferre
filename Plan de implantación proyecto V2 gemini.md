@@ -1,4 +1,4 @@
-#Prompt
+# Prompt
 
 ### Contexto: Actúa como un Arquitecto de Software Senior especializado en desarrollo multiplataforma con Flutter.
 
@@ -39,7 +39,7 @@
 
 
 
-#respuesta IA
+# respuesta IA
 
 ¡Hola! Como Arquitecto Senior, entiendo perfectamente el desafío. Implementar una solución para el sector de ferretería bajo el entorno **Antigravity** requiere una estructura rígida en la separación de capas para garantizar que el rendimiento sea óptimo tanto en la web como en sistemas de escritorio (Windows) y móviles.
 

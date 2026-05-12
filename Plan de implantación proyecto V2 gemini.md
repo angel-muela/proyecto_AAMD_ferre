@@ -1,6 +1,6 @@
-## Contexto: Actúa como un Arquitecto de Software Senior especializado en desarrollo multiplataforma con Flutter.
+### Contexto: Actúa como un Arquitecto de Software Senior especializado en desarrollo multiplataforma con Flutter.
 
-## Objetivo: Diseñar un Plan de Implantación detallado para el proyecto "Ferretería", una aplicación robusta que debe funcionar en Android, Web, Windows e iOS utilizando el entorno Antigravity.
+### Objetivo: Diseñar un Plan de Implantación detallado para el proyecto "Ferretería", una aplicación robusta que debe funcionar en Android, Web, Windows e iOS utilizando el entorno Antigravity.
 
 # Restricciones Técnicas:
 

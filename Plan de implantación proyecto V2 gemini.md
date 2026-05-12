@@ -1,165 +1,126 @@
-# Prompt
+# Prompt:
 
-### Contexto: Actúa como un Arquitecto de Software Senior especializado en desarrollo multiplataforma con Flutter.
+### Contexto: Actúa como un Arquitecto de Software Senior. Mi proyecto es una aplicación multiplataforma (Android, Web, Windows, iOS) de una Ferretería desarrollada en Flutter/Dart, usando Antigravity como entorno.
 
-### Objetivo: Diseñar un Plan de Implantación detallado para el proyecto "Ferretería", una aplicación robusta que debe funcionar en Android, Web, Windows e iOS utilizando el entorno Antigravity.
+### Estado Actual: Ya cuento con un proyecto en Firebase llamado BDcrudferre0290. En Firestore, ya existe una colección principal denominada EMPLEADOS con documentos que contienen los campos: nombre (string), puesto (string), salario (number), numero de telefono (string) y fecha de nacimiento (timestamp).
 
-# Restricciones Técnicas:
+# Restricciones de la Tarea:
 
-   1. Stack: Flutter & Dart.
+   1. Backend: Firebase Authentication (Login/Password) y Cloud Firestore.
 
-   2. Backend: Firebase (Firestore para base de datos y Authentication para login con correo/password).
+   2. Gestión de Estado: Provider.
 
-   3. Gestión de Estado: Provider.
+   3. Estándares: No utilizar analíticas, no usar la opción de producción "A" (mantener estándar limpio).
 
-   4. IDE: Configuración específica para Antigravity / VS Code.
+   4. Herramientas: Integración con Antigravity / VS Code.
 
-   5. Estándares: No utilizar opciones de producción "A", no incluir analíticas. El enfoque debe ser un estándar limpio y escalable.
+# Tarea: Genera un Plan de Implantación detallado en formato Markdown organizado por tablas que cubra:
 
-# Tarea: Antes de generar cualquier línea de código, genera un Plan de Implementación en formato Markdown que incluya:
+   1. Fase de Configuración: Herramientas necesarias para el entorno Antigravity y conexión con el proyecto BDcrudferre0290.
 
-   1. Requerimientos de Entorno: Herramientas necesarias y configuración del SDK para Antigravity.
+   2. Modelado de Datos: Define la clase Empleado en Dart basándote en los campos que ya tengo en Firestore (incluyendo conversión de Timestamps).
 
-   2. Arquitectura de la Información (UI/UX): Estructura de vistas (Home, Inventario, Carrito, Perfil).
+   3. Estructura de UI/UX: Planificación de pantallas para el CRUD de empleados y navegación de la ferretería.
 
-   3. Configuración de Firebase: Pasos para Firestore y Auth sin analíticas.
+   4. Arquitectura de Carpetas: Estructura profesional (models, services, providers, views).
 
-   4. Estructura del Proyecto: Organización de carpetas (Models, Views, Controllers/Providers, Services).
+   5. Dependencias: Listado preciso para pubspec.yaml (firebase_core, cloud_firestore, firebase_auth, provider).
 
-   5. Dependencias Críticas: Listado para el pubspec.yaml (provider, cloud_firestore, firebase_auth, etc.).
+   6. Plan de Pruebas: Verificación del flujo de datos entre Flutter y Firestore.
 
-   6. Cronograma de Desarrollo (Fases): Desde la inicialización hasta el despliegue multiplataforma.
+### Importante: No generes código fuente completo todavía. Solo entrega el plan estratégico paso a paso en tablas de Markdown como se solicita para mi Actividad 3 de la UIII.
 
-# Formato de entrega: Tablas de Markdown organizadas y listas de verificación (checklists). No proporciones el código fuente todavía, solo el plan estratégico.
+# respuesta IA:
 
+¡Entendido! Como Arquitecto Senior, he diseñado este Plan de Implantación estratégico para tu proyecto de la ferretería. Al trabajar con **Antigravity** (que optimiza el flujo de desarrollo en Flutter), es crucial mantener una separación clara entre la lógica de negocio y la interfaz de usuario.
 
-
-
-
-
-
-
-# respuesta IA
-
-¡Hola! Como Arquitecto Senior, entiendo perfectamente el desafío. Implementar una solución para el sector de ferretería bajo el entorno **Antigravity** requiere una estructura rígida en la separación de capas para garantizar que el rendimiento sea óptimo tanto en la web como en sistemas de escritorio (Windows) y móviles.
-
-A continuación, presento el **Plan de Implantación Estratégico** para el proyecto "Ferretería".
+A continuación, presento la hoja de ruta técnica para tu Actividad 3 de la UIII.
 
 ---
 
-## 1. Requerimientos de Entorno y Configuración
+## 🛠️ Fase 1: Configuración del Entorno y Conexión
 
-El entorno Antigravity exige una sincronización precisa entre el SDK de Flutter y las variables de entorno del sistema.
+Esta fase asegura que el entorno **Antigravity** en VS Code esté sincronizado con tu proyecto existente en Firebase.
 
-| Componente | Versión / Configuración | Notas |
+| Paso | Acción | Descripción |
 | --- | --- | --- |
-| **Flutter SDK** | Stable Channel (3.x o superior) | Base del framework. |
-| **Dart SDK** | 3.0.0+ | Habilitando *records* y *pattern matching*. |
-| **Entorno Antigravity** | Workspace Prefects / Dockerized | Configuración de contenedores para build aislada. |
-| **VS Code Extensions** | Flutter, Dart, Error Lens | Indispensable para debugging rápido. |
-| **Sistemas Operativos** | Win 10/11, macOS, Android SDK | Necesarios para compilación nativa. |
-
-### Checklist de Preparación:
-
-* [ ] Configuración de variables de entorno `ANTIGRAVITY_PATH`.
-* [ ] Ejecución de `flutter doctor` para validar compatibilidad nativa (Desktop/Web).
-* [ ] Habilitación de soporte para Windows: `flutter config --enable-windows-desktop`.
+| **1.1** | **Sync Antigravity** | Vincular el espacio de trabajo de VS Code con el CLI de Antigravity para pre-configuración de plantillas. |
+| **1.2** | **Firebase Login** | Ejecutar `firebase login` en la terminal para autenticar la sesión con la cuenta de `BDcrudferre0290`. |
+| **1.3** | **FlutterFire Config** | Ejecutar `flutterfire configure` seleccionando el ID `BDcrudferre0290` para generar el archivo `firebase_options.dart`. |
+| **1.4** | **Init Core** | Inicializar `Firebase.initializeApp` en el `main.dart` usando las opciones generadas. |
 
 ---
 
-## 2. Arquitectura de la Información (UX/UI)
+## 📊 Fase 2: Modelado de Datos (Dart Class)
 
-Dado que es una app multiplataforma, la navegación debe ser adaptativa. Utilizaremos un modelo de **Navegación Lateral** para Desktop/Web y **Bottom Navigation** para Mobile.
+Definición de la entidad `Empleado`. Es vital el manejo de `Timestamp` para evitar errores de tipo en Flutter.
 
-| Vista | Funcionalidad Core | Elementos Clave |
+| Atributo | Tipo de Dato Dart | Mapeo Firestore | Notas de Conversión |
+| --- | --- | --- | --- |
+| `id` | `String` | `DocumentID` | Se extrae del `doc.id` de Firestore. |
+| `nombre` | `String` | `nombre` | Valor simple. |
+| `puesto` | `String` | `puesto` | Valor simple. |
+| `salario` | `double` / `int` | `salario` | Manejar como `num` para evitar conflictos de precisión. |
+| `telefono` | `String` | `numero de telefono` | Formato String para admitir prefijos. |
+| `fechaNac` | `DateTime` | `fecha de nacimiento` | Convertir usando `.toDate()` desde el `Timestamp`. |
+
+---
+
+## 📁 Fase 3: Arquitectura de Carpetas Proporcional
+
+Estructura profesional orientada a la mantenibilidad y escalabilidad del proyecto.
+
+| Directorio | Responsabilidad | Contenido Sugerido |
 | --- | --- | --- |
-| **Home** | Dashboard de ventas y ofertas. | Buscador global, categorías, destacados. |
-| **Inventario** | Gestión de stock y precios. | Tabla filtrable, CRUD de productos. |
-| **Carrito** | Resumen de compra. | Cálculo de impuestos, selección de entrega. |
-| **Perfil** | Gestión de usuario y ajustes. | Datos fiscales, historial de pedidos. |
+| `lib/models/` | Definición de objetos | `empleado_model.dart` |
+| `lib/services/` | Comunicación con Firebase | `auth_service.dart`, `firestore_service.dart` |
+| `lib/providers/` | Gestión de estado (Provider) | `empleado_provider.dart`, `auth_provider.dart` |
+| `lib/views/` | Pantallas y componentes UI | `login_screen.dart`, `home_screen.dart`, `empleado_form.dart` |
+| `lib/utils/` | Helpers y constantes | `constants.dart`, `validators.dart` |
 
 ---
 
-## 3. Configuración de Firebase (Sin Analíticas)
+## 📱 Fase 4: Estructura de UI/UX y Navegación
 
-Para mantener el estándar solicitado de "código limpio", la integración se limitará estrictamente a la persistencia y seguridad.
+Diseño de flujo para una aplicación de gestión administrativa de ferretería.
 
-### Pasos Críticos:
-
-1. **Firebase Console**: Crear proyecto "Ferreteria-App".
-2. **Authentication**: Habilitar únicamente "Email/Password". Desactivar otros proveedores.
-3. **Cloud Firestore**: Iniciar en *Production Mode*.
-* *Reglas de Seguridad*: Bloquear lectura/escritura global, permitir solo a `request.auth != null`.
-
-
-4. **Exclusión de Analytics**: Al configurar `Firebase.initializeApp()`, no invocar métodos de recolección de datos. En Android/iOS, asegurar que el archivo de configuración no incluya el ID de medición.
+| Pantalla | Función Principal | Componentes Clave |
+| --- | --- | --- |
+| **Login** | Acceso seguro | Inputs de correo/pass, validación de campos. |
+| **Dashboard** | Menú principal | Botones de acceso a CRUD Empleados, Inventario (futuro). |
+| **Lista Empleados** | Visualización (R) | `StreamBuilder` o `Consumer` de Provider, `ListView`. |
+| **Formulario** | Alta/Edición (C/U) | Pickers de fecha para nacimiento, teclado numérico para salario. |
+| **Detalle** | Baja/Gestión (D) | Modal de confirmación para borrado, visualización extendida. |
 
 ---
 
-## 4. Estructura del Proyecto (Clean Architecture Lite)
+## 📦 Fase 5: Dependencias (pubspec.yaml)
 
-Organizaremos el código siguiendo una variante de la arquitectura de capas, optimizada para el uso de **Provider**.
+Listado estricto de librerías necesarias para cumplir con los requerimientos técnicos.
 
-```text
-lib/
-├── core/               # Constantes, temas y utilidades globales.
-├── data/
-│   ├── models/         # Clases de datos (Product, User, Order).
-│   └── services/       # Comunicación directa con Firebase (Wrappers).
-├── providers/          # Lógica de estado (InventoryProvider, AuthProvider).
-├── ui/
-│   ├── views/          # Pantallas completas (HomeView, LoginView).
-│   ├── widgets/        # Componentes reutilizables (CustomButton, Card).
-│   └── layouts/        # Wrappers para diseño adaptativo (Desktop vs Mobile).
-└── main.dart           # Punto de entrada y configuración de MultiProvider.
-
-```
+| Paquete | Versión Sugerida | Propósito |
+| --- | --- | --- |
+| `firebase_core` | `^2.x.x` | Núcleo de conexión con Firebase. |
+| `cloud_firestore` | `^4.x.x` | Persistencia y consulta de la colección EMPLEADOS. |
+| `firebase_auth` | `^4.x.x` | Gestión de sesiones de usuario. |
+| `provider` | `^6.x.x` | Inyección de dependencias y estado reactivo. |
+| `intl` | `^0.18.x` | Formateo de fechas y moneda para el salario. |
 
 ---
 
-## 5. Dependencias Críticas (`pubspec.yaml`)
+## 🧪 Fase 6: Plan de Pruebas (Data Flow)
 
-Estas son las librerías base necesarias para la operatividad sin incluir herramientas de marketing o seguimiento.
+Verificación de la integridad del flujo de datos entre la App y `BDcrudferre0290`.
 
-| Package | Propósito |
-| --- | --- |
-| `provider` | Gestión de estado reactiva y eficiente. |
-| `firebase_core` | Inicialización del entorno Firebase. |
-| `firebase_auth` | Autenticación robusta de usuarios. |
-| `cloud_firestore` | Base de datos NoSQL en tiempo real. |
-| `google_fonts` | Estandarización tipográfica multiplataforma. |
-| `intl` | Formateo de moneda (MXN/USD) y fechas. |
+| Caso de Prueba | Resultado Esperado | Herramienta |
+| --- | --- | --- |
+| **Auth Connection** | El usuario puede loguearse y el UID aparece en Firebase Auth. | Firebase Console |
+| **Fetch Read** | Los datos de la colección EMPLEADOS se listan en el móvil. | Debug Console / UI |
+| **Type Integrity** | La fecha de nacimiento se muestra como `DD/MM/AAAA` (no como String). | UI (intl package) |
+| **Persistence** | Al editar un salario, el cambio se refleja en tiempo real en Firestore. | Firestore Viewer |
 
 ---
 
-## 6. Cronograma de Desarrollo (Fases)
+> **Nota del Arquitecto:** Este plan cumple con los estándares de limpieza solicitados. Una vez aprobado este diseño de arquitectura, el siguiente paso será la implementación del `FirestoreService` para mapear los documentos de la colección EMPLEADOS a nuestra clase de modelo.
 
-### Fase 1: Cimientos y Auth (Semana 1)
-
-* [ ] Setup del proyecto en entorno Antigravity.
-* [ ] Implementación de `AuthService` y `AuthProvider`.
-* [ ] Diseño de vistas de Login y Registro.
-
-### Fase 2: Gestión de Datos (Semana 2)
-
-* [ ] Modelado de colecciones en Firestore (Products, Categories).
-* [ ] Desarrollo del `InventoryProvider` (CRUD de productos).
-* [ ] Implementación de la vista de Inventario con búsqueda.
-
-### Fase 3: Lógica de Negocio y Carrito (Semana 3)
-
-* [ ] Implementación de `CartProvider` para persistencia local del pedido.
-* [ ] Flujo de "Checkout" y generación de órdenes en Firebase.
-* [ ] Integración de diseño responsivo (Layouts adaptativos).
-
-### Fase 4: Despliegue y QA (Semana 4)
-
-* [ ] Pruebas de integración en Windows y Web.
-* [ ] Generación de binarios para Android (.apk/.aab) e iOS.
-* [ ] Auditoría de seguridad en reglas de Firestore.
-
----
-
-> **Nota de Arquitectura:** Al utilizar el entorno Antigravity, es vital asegurar que el consumo de memoria del `Provider` sea monitoreado, especialmente en la versión Web, evitando fugas de memoria en las suscripciones de los `Streams` de Firestore.
-
-¿Deseas que procedamos con el modelado de la base de datos en Firestore o prefieres comenzar con la estructura base del `main.dart`?
+¿Deseas que profundicemos en la lógica del **Provider** para la gestión de los empleados antes de pasar al código?

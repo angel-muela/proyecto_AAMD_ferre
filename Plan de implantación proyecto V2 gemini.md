@@ -574,3 +574,106 @@ Con este plan aprobado, el siguiente paso es **Fase 1**: crear el proyecto Flutt
 
 ---
 *Plan generado para: Ferretería El Patito | Flutter + Firebase | Mayo 2026*
+
+
+
+## a estas instrucciones quiero que le agregues unas entidades para la ferreteria y me digas que y donde poner los cambios
+
+
+¡Excelente plan! Para robustecer el sistema de la **Ferretería El Patito**, vamos a añadir tres entidades clave que suelen olvidarse pero son vitales para el control real de un negocio: **Proveedores**, **Compras** (Entradas de mercancía) y **Ajustes de Inventario** (Mermas o correcciones).
+
+Aquí tienes las entidades y las instrucciones precisas de dónde integrarlas:
+
+---
+
+### 1. Nuevas Entidades a agregar
+
+Estas deben definirse en la capa de **Domain (Entities)** y su persistencia en **Firestore**.
+
+#### **A. Proveedores (`proveedores`)**
+
+* `id`: String
+* `nombre`: String (ej. Truper, Helvex)
+* `contacto`: String (Nombre del agente)
+* `telefono`: String
+* `email`: String
+* `categorias`: Array (Qué marcas o tipos de productos surte)
+
+#### **B. Compras / Suministros (`compras`)**
+
+*Importante para calcular la ganancia real basándose en el costo de adquisición.*
+
+* `id`: String
+* `proveedorId`: String
+* `fecha`: Timestamp
+* `totalCompra`: Number
+* `facturaUrl`: String (PDF en Firebase Storage)
+* `productos`: Array `[{ productoId, cantidad, costoUnitario }]`
+
+#### **C. Movimientos de Inventario (`movimientos`)**
+
+*Para auditoría: saber por qué bajó o subió el stock fuera de una venta.*
+
+* `id`: String
+* `productoId`: String
+* `tipo`: String (entrada_compra | salida_merma | ajuste_manual)
+* `cantidad`: Number
+* `motivo`: String
+* `usuarioId`: String
+* `fecha`: Timestamp
+
+---
+
+### 2. ¿Dónde poner los cambios? (Instrucciones técnicas)
+
+Debes modificar las siguientes secciones del documento original:
+
+#### **En la Sección 3 (Arquitectura)**
+
+* **Donde dice:** `lib/domain/entities/`
+* **Acción:** Asegúrate de crear los archivos `proveedor_entity.dart`, `compra_entity.dart` y `movimiento_entity.dart`.
+
+#### **En la Sección 8 (Estructura de Base de Datos Firestore)**
+
+* **Acción:** Agrega estas tres nuevas colecciones al diagrama jerárquico:
+* `proveedores/`
+* `compras/`
+* `movimientos/` (Esta puede ser una subcolección de `productos` o una colección raíz para reportes globales).
+
+
+
+#### **En la Sección 11 (Gestión de Estado con Provider)**
+
+* **Acción:** Agrega un nuevo Provider a la lista de `MultiProvider`:
+```dart
+ChangeNotifierProvider(create: (_) => InventarioProvider()), // Para gestionar compras y movimientos
+
+```
+
+
+
+#### **En la Sección 12 (Fases de Desarrollo)**
+
+* **Acción:** En la **Fase 2 (Inventario)**, añade los siguientes puntos:
+* [ ] Crear módulo de Gestión de Proveedores.
+* [ ] Implementar registro de Compras para aumentar stock automáticamente.
+* [ ] Pantalla de historial de movimientos de un producto (Kardex).
+
+
+
+---
+
+### 3. Ajuste Sugerido en la UI (Sección 10.3)
+
+Para que el usuario pueda acceder a esto, modifica la navegación o el Dashboard:
+
+* **Inventario:** No solo debe ser una lista, debe tener un submenú o pestañas:
+1. **Stock** (Catálogo actual).
+2. **Entradas** (Registrar compras a proveedores).
+3. **Proveedores** (Directorio de contacto).
+
+
+
+> **💡 Tip de experto:** Agregar la entidad **Compras** te permitirá en la **Fase 4 (Reportes)** calcular el **ROI** y el **Margen de Utilidad** real, restando el `costo` de la compra al `precio` de la venta.
+
+¿Te gustaría que redacte el código del modelo `Compra` en Dart para empezar con la estructura de datos?

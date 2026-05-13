@@ -1,35 +1,6 @@
 # Prompt:
 
-### Contexto: Actúa como un Arquitecto de Software Senior. Mi proyecto es una aplicación multiplataforma (Android, Web, Windows, iOS) de una Ferretería desarrollada en Flutter/Dart, usando Antigravity como entorno.
-
-### Estado Actual: Ya cuento con un proyecto en Firebase llamado BDcrudferre0290. En Firestore, ya existe una colección principal denominada EMPLEADOS con documentos que contienen los campos: nombre (string), puesto (string), salario (number), numero de telefono (string) y fecha de nacimiento (timestamp).
-
-# Restricciones de la Tarea:
-
-   1. Backend: Firebase Authentication (Login/Password) y Cloud Firestore.
-
-   2. Gestión de Estado: Provider.
-
-   3. Estándares: No utilizar analíticas, no usar la opción de producción "A" (mantener estándar limpio).
-
-   4. Herramientas: Integración con Antigravity / VS Code.
-
-# Tarea: Genera un Plan de Implantación detallado en formato Markdown organizado por tablas que cubra:
-
-   1. Fase de Configuración: Herramientas necesarias para el entorno Antigravity y conexión con el proyecto BDcrudferre0290.
-
-   2. Modelado de Datos: Define la clase Empleado en Dart basándote en los campos que ya tengo en Firestore (incluyendo conversión de Timestamps).
-
-   3. Estructura de UI/UX: Planificación de pantallas para el CRUD de empleados y navegación de la ferretería.
-
-   4. Arquitectura de Carpetas: Estructura profesional (models, services, providers, views).
-
-   5. Dependencias: Listado preciso para pubspec.yaml (firebase_core, cloud_firestore, firebase_auth, provider).
-
-   6. Plan de Pruebas: Verificación del flujo de datos entre Flutter y Firestore.
-
-### Importante: No generes código fuente completo todavía. Solo entrega el plan estratégico paso a paso en tablas de Markdown como se solicita para mi Actividad 3 de la UIII.
-no olvides hacer todo lo mas detallado posible, tambien planea como se veria el arbol de archivos de antigravity, no generes codigo aun, pero planea los archivos que tendremos en antigravity, esto ulltimo no lo hagas tabla, hazlo como una forma grafica de visualizar la estructura del proyecto en antigravity
+Actúa como un creador de software. Quiero crear una aplicación multiplataforma en flutter dart (y firebase utilizando vs code o Antigravity, que herramientas se requieren para UI, UX, dependencias, login autenticación usuario password, base de datos firestore, privider, dependencias en pubspec.yaml), antes de que proporciones código, quiero crear un plan de implementación en formato markdown, para desarrollar la aplicación "ferreteria el patito", no código, procedimiento paso a paso para el desarrollo
 
 # respuesta IA:
 
